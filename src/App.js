@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import './css/style.css';
+import Canvas from './components/Canvas'
+import ButtonArea from './components/ButtonArea';
+import EditArea from './components/EditArea';
+import Shapes from './models/Shapes';
 
 function App() {
+  const shapes = new Shapes();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ButtonArea shapes={shapes} />
+      <Canvas className='canvas' shapes={shapes} />
+      <EditArea shapes={shapes} />
     </div>
   );
 }
