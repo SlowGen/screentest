@@ -1,6 +1,6 @@
 import React from 'react'
 import AddCircleButton from './AddCircleButton'
-import AddSquareButton from './AddSquareButton'
+import AddRectangleButton from './AddRectangleButton'
 
 import '../css/style.css';
 
@@ -9,7 +9,7 @@ const ButtonArea = (props) => {
     return(
         <div className="button-area">
             <AddCircleButton addCircle={shapes.addCircle} />
-            <AddSquareButton addSquare={shapes.addSquare} />
+            <AddRectangleButton addSquare={shapes.addSquare} />
         </div>
     )
 }

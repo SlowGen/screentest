@@ -1,12 +1,12 @@
 import React from "react";
 import '../css/style.css';
 
-import Shapes from "../models/Shapes";
 
-const AddCircleButton = (addCircle) => {
+const AddCircleButton = (props) => {
+    const {shapes} = props;
     return (
         <div className="add-circle-button">
-            <button className='circle-button' onClick={addCircle}>Add Cicle</button>
+            <button className='circle-button' onClick={() => shapes.addCircle()}>Add Cicle</button>
         </div>
     )
 }
