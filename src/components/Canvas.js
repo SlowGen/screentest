@@ -1,32 +1,33 @@
 import React, {useRef, useEffect} from 'react'
+import {useSelector} from 'react-redux'
 
 const Canvas = props => {
-    const {shapes} = props;
-    const allShapes = shapes.getAllShapes();
     const canvasRef = useRef(null)
+    // const dispatch = useDispatch()
+    const shapes = useSelector(state => state.shapes)
 
     const drawShape = (context, shape) => {
-        if (shape.type === 'rect') {
+        if (shape.type === 'rectangle') {
             context.fillStyle = shape.color
             context.beginPath()
             context.fillRect(shape.x, shape.y, shape.width, shape.height)
 
         }
         else {
-            context.fillStyle = shape.color //'#0011ff'
+            console.log('hit circle')
+            context.fillStyle = shape.color
             context.beginPath()
-            context.arc(shape.x, shape.y, shape.radius, shape.startAngle, shape.endAngle, shape.direction)  //100, 100, 50, 0, 2 * Math.PI
+            context.arc(shape.x, shape.y, shape.radius, shape.startAngle, shape.endAngle, shape.direction = true)
             context.fill()
         }
     }
 
     useEffect(() => {
+        console.log('shapes-state', shapes)
         const canvas = canvasRef.current
         const context = canvas.getContext('2d')
-        allShapes.map(shape => drawShape(context, shape))
-    }, [allShapes])
-    
-    
+        shapes.forEach(shape => drawShape(context, shape))
+    })
     
     return <canvas ref={canvasRef} height={500} width={500} {...props} />
 }

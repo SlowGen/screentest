@@ -1,20 +1,19 @@
 import React, {useEffect} from "react";
-import ShapeCard from './ShapeCard';
+// import ShapeCard from './ShapeCard';
 
-const EditArea = (props) => {
-    const {shapes} = props;
-    const allShapes = shapes.getAllShapes();
+const EditArea = () => {
 
     useEffect(() => {
     })
 
     return (
         <div className="edit-area">
-            {allShapes.map(shape => (
+            edit area
+            {/* {allShapes.map(shape => (
                 <div>
                 <ShapeCard key={shape.index} shape={shape} />
                 </div>
-            ))}
+            ))} */}
         </div>
     )
     
