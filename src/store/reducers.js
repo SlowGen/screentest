@@ -1,26 +1,16 @@
-// import shapesInstance from './index';
 import rectangle from '../models/rectangle';
 import circle from '../models/circle';
+import {
+    createShape,
+    editShape,
+    deleteShape,
+    ADD_SHAPE,
+    UPDATE_SHAPE,
+    REMOVE_SHAPE,
+} from './actions'
 
-const ADD_SHAPE = 'ADD_SHAPE';
-const UPDATE_SHAPE = 'UPDATE_SHAPE';
-const REMOVE_SHAPE = 'REMOVE_SHAPE';
 
 const initialState = []
-
-const createShape = shape => ({
-    type: ADD_SHAPE,
-    shape
-})
-
-const editShape = shape => ({
-    type: UPDATE_SHAPE,
-    shape
-})
-
-const deleteShape = shape => ({
-    type: REMOVE_SHAPE,
-})
 
 export const addShape = shape => dispatch => {
     if (shape === 'rectangle')
@@ -61,10 +51,10 @@ export const updateShape = (shape, property, newValue) => dispatch => {
 }
 
 export const removeShape = (state = initialState, deletedShape) => dispatch => {
-    dispatch(deleteShape(state.filter(shape => shape.id === deletedShape.id)));
+    dispatch(deleteShape(state.filter(shape => shape.id !== deletedShape.id)));
 }
 
-export default function shapes(state = initialState, action) {
+export const shapes = (state = initialState, action) => {
     switch (action.type) {
         case ADD_SHAPE:
             action.shape.x = action.shape.x + 10;

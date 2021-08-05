@@ -1,6 +1,6 @@
 import React from "react";
 import {useDispatch} from 'react-redux';
-import {addShape} from '../store/shapes';
+import {addShape} from '../store/reducers';
 import '../css/style.css';
 
 const AddRectangleButton = (props) => {
