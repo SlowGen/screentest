@@ -7,6 +7,8 @@ const circle = {
     x: 25,
     y: 25,
     radius: 25,
+    start: 0,
+    end: Math.PI * 2,
     isSelected: false,
 }
 

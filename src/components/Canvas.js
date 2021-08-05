@@ -14,10 +14,9 @@ const Canvas = props => {
 
         }
         else {
-            console.log('hit circle')
             context.fillStyle = shape.color
             context.beginPath()
-            context.arc(shape.x, shape.y, shape.radius, shape.startAngle, shape.endAngle, shape.direction = true)
+            context.arc(shape.x, shape.y, shape.radius, shape.start, shape.end)
             context.fill()
         }
     }
