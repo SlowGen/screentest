@@ -1,16 +1,18 @@
+import { Provider } from 'react-redux';
+import store from './store';
 import './css/style.css';
 import Canvas from './components/Canvas'
 import ButtonArea from './components/ButtonArea';
 import EditArea from './components/EditArea';
-import Shapes from './models/Shapes';
 
 function App() {
-  const shapes = new Shapes();
   return (
     <div className="App">
-      <ButtonArea shapes={shapes} />
-      <Canvas className='canvas' shapes={shapes} />
-      <EditArea shapes={shapes} />
+      <Provider store={store}>
+        <ButtonArea />
+        <Canvas className='canvas' />
+        <EditArea />
+      </Provider>
     </div>
   );
 }

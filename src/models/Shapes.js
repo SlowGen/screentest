@@ -1,22 +1,8 @@
+import Circle from './Circle'
+import Rectangle from './Rectangle'
+
 const Shapes = function() {
     this.allShapes = [];
-}
-
-const Circle = function(index) {
-    this.index = index;
-    this.color = '#0044ff';
-    this.x = 25;
-    this.y = 25;
-    this.radius = 25;
-}
-
-const Rectangle = function(index) {
-    this.index = index;
-    this.color = '#ff0044';
-    this.x = 50;
-    this.y = 50;
-    this.width = 100;
-    this.height = 100;
 }
 
 Shapes.prototype.addCircle = function() {
@@ -31,6 +17,18 @@ Shapes.prototype.getAllShapes = function() {
     return this.allShapes;
 }
 
+Shapes.prototype.getOneShape = function(index) {
+    if (index < this.allShapes.length) {
+        return this.allShapes[index];
+    } else {
+        return null;
+    }
+}
 
+Shapes.prototype.removeShape = function(index) {
+    if (index < this.allShapes.length) {
+        this.allShapes.splice(index, 1);
+    }
+}
 
 export default Shapes;
