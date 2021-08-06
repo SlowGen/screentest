@@ -29,7 +29,7 @@ const drawShape = (context, shape) => {
         if (shape.isHovered) {
             context.strokeStyle = hoveredColor
             context.lineWidth = 10
-            context.strokeRect(shape.x, shape.y, shape.width, shape.height)
+            context.stroke()
         }
     }
 }

@@ -7,12 +7,14 @@ import {
     oneSelected,
     manySelected,
     noneSelected,
+    showHover,
     ADD_SHAPE,
     UPDATE_SHAPE,
     REMOVE_SHAPE,
     ONE_SELECTED,
     MANY_SELECTED,
     NONE_SELECTED,
+    SHOW_HOVER,
 } from './actions'
 
 const initialState = []
@@ -90,6 +92,19 @@ export const selectNoShapes = () => (dispatch, getState) => {
     dispatch(noneSelected(shapes))
 }
 
+export const toggleHoverOn = (index) => (dispatch, getState) => {
+    const {shapes} = getState()
+    shapes.forEach(shape => shape.isHovered = false)
+    shapes[index].isHovered = true;
+    dispatch(showHover(shapes))
+}
+
+export const toggleHoverOff = () => (dispatch, getState) => {
+    const {shapes} = getState()
+    shapes.forEach(shape => shape.isHovered = false)
+    dispatch(showHover(shapes))
+}
+
 export const shapes = (state = initialState, action) => {
     switch (action.type) {
         case ADD_SHAPE:
@@ -103,6 +118,8 @@ export const shapes = (state = initialState, action) => {
         case MANY_SELECTED:
             return [...state]
         case NONE_SELECTED:
+            return [...state]
+        case SHOW_HOVER:
             return [...state]
         default:
             return state;

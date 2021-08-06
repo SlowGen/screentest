@@ -5,6 +5,7 @@ export const REMOVE_SHAPE = 'REMOVE_SHAPE';
 export const ONE_SELECTED = 'ONE_SELECTED';
 export const MANY_SELECTED = 'MANY_SELECTED';
 export const NONE_SELECTED = 'NONE_SELECTED';
+export const SHOW_HOVER = 'SHOW_HOVER';
 
 export const addShape = shape => ({
     type: ADD_SHAPE,
@@ -33,6 +34,11 @@ export const manySelected = shapes => ({
 
 export const noneSelected = shapes => ({
     type: NONE_SELECTED,
+    shapes
+})
+
+export const showHover = shapes => ({
+    type: SHOW_HOVER,
     shapes
 })
 
