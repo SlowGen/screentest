@@ -1,13 +1,13 @@
 import React from "react";
 import {useDispatch} from 'react-redux';
-import {addShape} from '../store/reducers';
+import {createShape} from '../store/shapes';
 import '../css/style.css';
 
 const AddRectangleButton = (props) => {
     const dispatch = useDispatch();
 
     const addRectangle = () => {
-        dispatch(addShape('rectangle'))
+        dispatch(createShape('rectangle'))
     }
     return (
         <div className="add-square-button">

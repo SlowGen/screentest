@@ -1,7 +1,9 @@
 import {v4 as uuid} from 'uuid';
 
-const circle = {
+const circle = () => ({
     id: uuid(),
+    isSelected: false,
+    isHovered: false,
     type: 'circle',
     color: '#0044ff',
     x: 25,
@@ -9,7 +11,6 @@ const circle = {
     radius: 25,
     start: 0,
     end: Math.PI * 2,
-    isSelected: false,
-}
+})
 
 export default circle;

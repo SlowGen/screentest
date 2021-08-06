@@ -1,6 +1,6 @@
 import React from "react";
 import {useDispatch} from "react-redux";
-import {addShape} from '../store/reducers'
+import {createShape} from '../store/shapes'
 import '../css/style.css';
 
 
@@ -8,7 +8,7 @@ const AddCircleButton = () => {
     const dispatch = useDispatch();
 
     const addCircle = () => {
-        dispatch(addShape('circle'))
+        dispatch(createShape('circle'))
     }
     return (
         <div className="add-circle-button">
