@@ -8,6 +8,7 @@ import {
     manySelected,
     noneSelected,
     showHover,
+    moveSelected,
     ADD_SHAPE,
     UPDATE_SHAPE,
     REMOVE_SHAPE,
@@ -15,6 +16,7 @@ import {
     MANY_SELECTED,
     NONE_SELECTED,
     SHOW_HOVER,
+    MOVE_SELECTED,
 } from './actions'
 
 const initialState = []
@@ -74,7 +76,6 @@ export const deleteShape = (deletedShape) => (dispatch, getState) => {
 
 export const selectOneShape = (index) => (dispatch, getState) => {
     const {shapes} = getState()
-    shapes.forEach(shape => shape.isSelected = false)
     shapes[index].isSelected = true;
     dispatch(oneSelected(shapes))
 }
@@ -104,6 +105,26 @@ export const toggleHoverOff = () => (dispatch, getState) => {
     dispatch(showHover(shapes))
 }
 
+export const moveShapes = (mousePosition, shapeCenter) => (dispatch, getState) => {
+    const {selected, shapes} = getState()
+    const mouseX = mousePosition[0]
+    const mouseY = mousePosition[1]
+    const delta = [mouseX - shapeCenter[0], mouseY - shapeCenter[1]]
+    
+    const locationChange = (shape) => {
+        if (shape.type === 'rectangle') {
+            shape.x = shape.x + (delta[0] / 2)
+            shape.y = shape.y + (delta[1] / 2)
+        } else {
+            shape.x = shape.x + delta[0]
+            shape.y = shape.y + delta[1]
+        }
+    }
+    
+    selected.forEach(shape => locationChange(shape))
+    dispatch(moveSelected(shapes))
+}
+
 export const shapes = (state = initialState, action) => {
     switch (action.type) {
         case ADD_SHAPE:
@@ -119,6 +140,8 @@ export const shapes = (state = initialState, action) => {
         case NONE_SELECTED:
             return [...state]
         case SHOW_HOVER:
+            return [...state]
+        case MOVE_SELECTED:
             return [...state]
         default:
             return state;

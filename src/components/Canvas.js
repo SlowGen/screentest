@@ -20,9 +20,9 @@ const Canvas = props => {
         ref={canvasRef} 
         height={500} 
         width={500} 
-        onMouseMove={(e) => onMouseMove(e, shapes, dispatch)}
+        onMouseMove={(e) => onMouseMove(e, shapes, selected, dispatch)}
         onMouseDown={(e) => onMouseDown(e, shapes, selected, dispatch)}
-        onMouseUp={() => onMouseUp()}
+        onMouseUp={(e) => onMouseUp(e, shapes, dispatch)}
         {...props} />
 }
 
