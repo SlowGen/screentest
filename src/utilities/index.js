@@ -1,12 +1,8 @@
 import drawShape from './drawShape'
-import onClick from './onClick'
-import onMouseMove from './onMouseMove'
-import onMouseUp from './onMouseUp'
-import onMouseDown from './onMouseDown'
+import {onMouseMove, onMouseUp, onMouseDown} from './mouseEvents'
 
 export {
   drawShape,
-  onClick,
   onMouseMove,
   onMouseUp,
   onMouseDown

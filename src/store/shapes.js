@@ -34,7 +34,6 @@ export const createShape = shapeType => (dispatch, getState) => {
         shapes.push(newCircle)
         dispatch(addShape(shapes))
     }
-        
 }
 
 export const editShape = (shape, property, newValue) => dispatch => {

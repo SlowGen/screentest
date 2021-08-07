@@ -7,12 +7,12 @@ const drawShape = (context, shape) => {
         context.fillRect(shape.x, shape.y, shape.width, shape.height)
         if (shape.isSelected) {
             context.strokeStyle = selectedColor
-            context.lineWidth = 5
+            context.lineWidth = 10
             context.strokeRect(shape.x, shape.y, shape.width, shape.height)
         }
         if (shape.isHovered) {
             context.strokeStyle = hoveredColor
-            context.lineWidth = 10
+            context.lineWidth = 5
             context.strokeRect(shape.x, shape.y, shape.width, shape.height)
         }
     }
@@ -23,12 +23,12 @@ const drawShape = (context, shape) => {
         context.fill()
         if (shape.isSelected) {
             context.strokeStyle = selectedColor
-            context.lineWidth = 5
+            context.lineWidth = 10
             context.stroke()
         }
         if (shape.isHovered) {
             context.strokeStyle = hoveredColor
-            context.lineWidth = 10
+            context.lineWidth = 5
             context.stroke()
         }
     }

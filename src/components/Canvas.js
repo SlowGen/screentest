@@ -1,6 +1,6 @@
 import React, {useRef, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
-import {drawShape, onClick, onMouseMove, onMouseDown, onMouseUp} from '../utilities'
+import {drawShape, onMouseMove, onMouseDown, onMouseUp} from '../utilities'
 
 const Canvas = props => {
     const canvasRef = useRef(null)
@@ -20,10 +20,9 @@ const Canvas = props => {
         ref={canvasRef} 
         height={500} 
         width={500} 
-        onClick={(e) => onClick(e, shapes, selected, dispatch)}
         onMouseMove={(e) => onMouseMove(e, shapes, dispatch)}
-        onMouseDown={onMouseDown}
-        onMouseUp={onMouseUp}
+        onMouseDown={(e) => onMouseDown(e, shapes, selected, dispatch)}
+        onMouseUp={() => onMouseUp()}
         {...props} />
 }
 
