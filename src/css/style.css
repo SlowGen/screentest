@@ -21,7 +21,7 @@
 
 .edit-area {
   padding: 10px;
-  min-width: 200px;
+  min-width: 300px;
 }
 
 .shape-card {
@@ -34,10 +34,12 @@
 }
 
 .shape-card-row {
+  min-height: 35px;
   display: flex;
   justify-content: space-between;
 }
 
 .button {
   width: 100px;
+  height: 30px;
 }
