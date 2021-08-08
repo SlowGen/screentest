@@ -9,9 +9,9 @@ function App() {
   return (
     <div className="App">
       <Provider store={store}>
-        <ButtonArea />
+        <ButtonArea className="button-area" />
         <Canvas className='canvas' />
-        <EditArea />
+        <EditArea className="edit-area" />
       </Provider>
     </div>
   );

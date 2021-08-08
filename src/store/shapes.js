@@ -69,9 +69,9 @@ export const editShape = (shape, property, newValue) => dispatch => {
 
 export const deleteShape = (deletedShape) => (dispatch, getState) => {
     const {shapes} = getState();
-    if (shapes.length > 0) {
-        dispatch(removeShape(shapes.filter(shape => shape.id !== deletedShape.id)));
-    }
+    const newShapes = shapes.filter(shape => shape !== deletedShape)
+    console.log('newshapes', newShapes)
+    dispatch(removeShape(newShapes));
 }
 
 export const selectOneShape = (index) => (dispatch, getState) => {
@@ -132,7 +132,7 @@ export const shapes = (state = initialState, action) => {
         case UPDATE_SHAPE:
             return [...state]
         case REMOVE_SHAPE:
-            return [...state]
+            return action.shapes
         case ONE_SELECTED:
             return  [...state]
         case MANY_SELECTED:

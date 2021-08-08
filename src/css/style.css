@@ -21,4 +21,23 @@
 
 .edit-area {
   padding: 10px;
+  min-width: 200px;
+}
+
+.shape-card {
+  border-radius: 15px;
+  border-width: 2px;
+  border-style: solid;
+  padding: 10px;
+  align-content: space-between;
+  min-height: 200px;
+}
+
+.shape-card-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  width: 100px;
 }

@@ -1,19 +1,18 @@
-import React, {useEffect} from "react";
-// import ShapeCard from './ShapeCard';
+import React from "react";
+import {useSelector} from "react-redux";
+import ShapeCard from './ShapeCard';
 
 const EditArea = () => {
+    const selected = useSelector(state => state.selected);
 
-    useEffect(() => {
-    })
 
     return (
         <div className="edit-area">
-            edit area
-            {/* {allShapes.map(shape => (
-                <div>
-                <ShapeCard key={shape.index} shape={shape} />
+            {selected.map(shape => (
+                <div key={shape.id}>
+                <ShapeCard shape={shape} />
                 </div>
-            ))} */}
+            ))}
         </div>
     )
     
