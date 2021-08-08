@@ -3,9 +3,8 @@ import {createLogger} from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import {shapes} from './shapes';
-import {selected} from './selected';
 
-const reducer = combineReducers({shapes, selected})
+const reducer = combineReducers({shapes})
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )

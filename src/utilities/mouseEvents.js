@@ -1,4 +1,3 @@
-import {groupSelected, ungroupSelected, addFirstSelection, } from '../store/selected'
 import {selectManyShapes, selectNoShapes, selectOneShape, toggleHoverOff, toggleHoverOn, moveShapes} from '../store/shapes'
 import isHit from './isHit';
 
@@ -7,7 +6,7 @@ let isDragging = false;
 
 let position = [null, null];
 
-export const onMouseDown = (e, shapes, selected, dispatch) => {
+export const onMouseDown = (e, shapes, dispatch) => {
     isDragging = true;
     const {shiftKey} = e;
     const canvas = document.getElementById('canvas')
@@ -19,21 +18,16 @@ export const onMouseDown = (e, shapes, selected, dispatch) => {
         //ideally, this could be reordered so that the selected shape always moves to the top
         //a feature for the future
         if (hitIndex === -1) {
-            
             dispatch(selectNoShapes())
-            dispatch(ungroupSelected())
-        } else if (shiftKey && selected.length > 0) {
+        } else if (shiftKey) {
             dispatch(selectManyShapes(hitIndex))
-            dispatch(groupSelected(hitIndex))
         } else {
             const currentPosition = [parseInt(e.clientX - onCanvas.x), parseInt(e.clientY - onCanvas.y)]
             console.log('position', position)
             console.log('currentPosition', currentPosition)
             if (position[0] === currentPosition[0] && position[1] === currentPosition[1]) {
                 dispatch(selectNoShapes())
-                dispatch(ungroupSelected())
                 dispatch(selectOneShape(hitIndex))
-                dispatch(addFirstSelection(hitIndex))
             } else {
                 dispatch(moveShapes(currentPosition))
             }
@@ -46,7 +40,7 @@ export const onMouseUp = () => {
     isDragging = false;
 }
 
-export const onMouseMove = (e, shapes, selected, dispatch,) => {
+export const onMouseMove = (e, shapes, dispatch,) => {
     const canvas = document.getElementById('canvas')
     const onCanvas = canvas && canvas.getBoundingClientRect()
     if (onCanvas) {

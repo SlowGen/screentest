@@ -106,7 +106,8 @@ export const toggleHoverOff = () => (dispatch, getState) => {
 }
 
 export const moveShapes = (mousePosition, shapeCenter) => (dispatch, getState) => {
-    const {selected, shapes} = getState()
+    const {shapes} = getState()
+    const selected = shapes.filter(shape => shape.isSelected)
     const mouseX = mousePosition[0]
     const mouseY = mousePosition[1]
     const delta = [mouseX - shapeCenter[0], mouseY - shapeCenter[1]]

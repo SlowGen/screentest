@@ -48,23 +48,23 @@ export const moveSelected = shapes => ({
     shapes
 })
 
-//actions for selected state
-export const ADD_FIRST_SELECTED = 'ADD_FIRST_SELECTED'
-export const ADD_SELECTED_GROUP = 'ADD_SELECTED_GROUP';
-export const CLEAR_SELECTED_GROUP = 'CLEAR_SELECTED_GROUP';
+// //actions for selected state
+// export const ADD_FIRST_SELECTED = 'ADD_FIRST_SELECTED'
+// export const ADD_SELECTED_GROUP = 'ADD_SELECTED_GROUP';
+// export const CLEAR_SELECTED_GROUP = 'CLEAR_SELECTED_GROUP';
 
 
-export const addFirstSelected = selected => ({
-    type: ADD_FIRST_SELECTED,
-    selected
-})
+// export const addFirstSelected = selected => ({
+//     type: ADD_FIRST_SELECTED,
+//     selected
+// })
 
-export const addSelectedGroup = selected => ({
-    type: ADD_SELECTED_GROUP,
-    selected
-})
+// export const addSelectedGroup = selected => ({
+//     type: ADD_SELECTED_GROUP,
+//     selected
+// })
 
-export const clearSelectedGroup = (selected) => ({
-    type: 'CLEAR_SELECTED_GROUP',
-    selected
-})
+// export const clearSelectedGroup = (selected) => ({
+//     type: 'CLEAR_SELECTED_GROUP',
+//     selected
+// })

@@ -5,7 +5,6 @@ import {drawShape, onMouseMove, onMouseDown, onMouseUp} from '../utilities'
 const Canvas = props => {
     const canvasRef = useRef(null)
     const shapes = useSelector(state => state.shapes)
-    const selected = useSelector(state => state.selected)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -20,8 +19,8 @@ const Canvas = props => {
         ref={canvasRef} 
         height={500} 
         width={500} 
-        onMouseMove={(e) => onMouseMove(e, shapes, selected, dispatch)}
-        onMouseDown={(e) => onMouseDown(e, shapes, selected, dispatch)}
+        onMouseMove={(e) => onMouseMove(e, shapes, dispatch)}
+        onMouseDown={(e) => onMouseDown(e, shapes, dispatch)}
         onMouseUp={(e) => onMouseUp(e, shapes, dispatch)}
         {...props} />
 }
