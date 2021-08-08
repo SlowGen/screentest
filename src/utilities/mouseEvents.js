@@ -1,18 +1,15 @@
 import {selectManyShapes, selectNoShapes, selectOneShape, toggleHoverOff, toggleHoverOn, moveShapes} from '../store/shapes'
 import isHit from './isHit';
 
-let isDragging = false;
+let canDrag = false;
+let didMove = false;
 
-
-let position = [null, null];
-
-export const onMouseDown = (e, shapes, dispatch) => {
-    isDragging = true;
+export const onClick = (e, shapes, dispatch) => {
     const {shiftKey} = e;
     const canvas = document.getElementById('canvas')
     const onCanvas = canvas && canvas.getBoundingClientRect();
     if (onCanvas) {
-        position = [parseInt(e.clientX - onCanvas.x), parseInt(e.clientY - onCanvas.y)]
+        const position = [parseInt(e.clientX - onCanvas.x), parseInt(e.clientY - onCanvas.y)]
         const hitIndex = shapes.reverse().findIndex(shape => isHit(shape, position[0], position[1]));
         //reverse is used to select the shape on top of a pile of shapes when many are added without moving
         //ideally, this could be reordered so that the selected shape always moves to the top
@@ -21,21 +18,21 @@ export const onMouseDown = (e, shapes, dispatch) => {
             dispatch(selectNoShapes())
         } else if (shiftKey) {
             dispatch(selectManyShapes(hitIndex))
-        } else {
-            const currentPosition = [parseInt(e.clientX - onCanvas.x), parseInt(e.clientY - onCanvas.y)]
-            if (position[0] === currentPosition[0] && position[1] === currentPosition[1]) {
-                dispatch(selectNoShapes())
-                dispatch(selectOneShape(hitIndex))
-            } else {
-                dispatch(moveShapes(currentPosition))
-            }
-            
+        } else if (!didMove) {
+            dispatch(selectNoShapes())
+            dispatch(selectOneShape(hitIndex))
         }
     }
+    didMove = false;
+}
+
+export const onMouseDown = (e, shapes, dispatch) => {
+    canDrag = true;
 }
 
 export const onMouseUp = () => {
-    isDragging = false;
+    canDrag = false;
+    
 }
 
 export const onMouseMove = (e, shapes, dispatch,) => {
@@ -44,7 +41,7 @@ export const onMouseMove = (e, shapes, dispatch,) => {
     if (onCanvas) {
         const position = [parseInt(e.clientX - onCanvas.x), parseInt(e.clientY - onCanvas.y)]
         const hitIndex = shapes.reverse().findIndex(shape => isHit(shape, position[0], position[1]));
-        if (!isDragging) {
+        if (!canDrag) {
             if (hitIndex === -1) {
                 dispatch(toggleHoverOff())
             } else {
@@ -55,7 +52,12 @@ export const onMouseMove = (e, shapes, dispatch,) => {
             const shapeCenter = hitIndex !== -1 ? shapes[hitIndex].type === 'rectangle' ? 
                 [shapes[hitIndex].x + shapes[hitIndex].width / 2, shapes[hitIndex].y + shapes[hitIndex].height / 2] :
                 [shapes[hitIndex].x, shapes[hitIndex].y] : position
-            dispatch(moveShapes(position, shapeCenter))
+            const selected = shapes.filter(shape => shape.isSelected);
+
+            if (!selected.includes(shapes[hitIndex])) dispatch(selectNoShapes())
+
+            dispatch(moveShapes(position, shapeCenter, hitIndex))
+            didMove = true;
         }
     } else {
         dispatch(toggleHoverOff())

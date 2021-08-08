@@ -20,6 +20,7 @@ import {
 } from './actions'
 
 const initialState = []
+let shapeCache
 
 export const createShape = shapeType => (dispatch, getState) => {
     const { shapes } = getState()
@@ -75,7 +76,7 @@ export const deleteShape = (deletedShape) => (dispatch, getState) => {
 
 export const selectOneShape = (index) => (dispatch, getState) => {
     const {shapes} = getState()
-    shapes[index].isSelected = true;
+    shapes[index].isSelected = !shapes[index].isSelected;
     dispatch(oneSelected(shapes))
 }
 
@@ -104,12 +105,15 @@ export const toggleHoverOff = () => (dispatch, getState) => {
     dispatch(showHover(shapes))
 }
 
-export const moveShapes = (mousePosition, shapeCenter) => (dispatch, getState) => {
+export const moveShapes = (mousePosition, shapeCenter, hitIndex) => (dispatch, getState) => {
     const {shapes} = getState()
     const selected = shapes.filter(shape => shape.isSelected)
     const mouseX = mousePosition[0]
     const mouseY = mousePosition[1]
     const delta = [mouseX - shapeCenter[0], mouseY - shapeCenter[1]]
+    let shape = shapes[hitIndex] || shapeCache
+    
+    if (shapes[hitIndex]) shapeCache = shapes[hitIndex] 
     
     const locationChange = (shape) => {
         if (shape.type === 'rectangle') {
@@ -120,8 +124,11 @@ export const moveShapes = (mousePosition, shapeCenter) => (dispatch, getState) =
             shape.y = shape.y + delta[1]
         }
     }
-    
-    selected.forEach(shape => locationChange(shape))
+    if (!selected.length) {
+        locationChange(shape)
+    } else {
+        selected.forEach(shape => locationChange(shape))
+    }
     dispatch(moveSelected(shapes))
 }
 
