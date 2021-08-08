@@ -1,6 +1,7 @@
 const drawShape = (context, shape) => {
-    const selectedColor = '#f5e042'
-    const hoveredColor = '#7732a8'
+    const selectedColor = 'rgba(238, 228, 50, 0.88)'
+    const hoveredColor = 'rgba(160, 150, 182, 0.45)'
+    const whiteColor = 'rgba(250, 250, 250, 1)'
     if (shape.type === 'rectangle') {
         context.fillStyle = shape.color
         context.beginPath()
@@ -9,10 +10,13 @@ const drawShape = (context, shape) => {
             context.strokeStyle = selectedColor
             context.lineWidth = 10
             context.strokeRect(shape.x, shape.y, shape.width, shape.height)
+            context.strokeStyle = whiteColor
+            context.lineWidth = 5
+            context.strokeRect(shape.x, shape.y, shape.width, shape.height)
         }
         if (shape.isHovered) {
             context.strokeStyle = hoveredColor
-            context.lineWidth = 5
+            context.lineWidth = 10
             context.strokeRect(shape.x, shape.y, shape.width, shape.height)
         }
     }
@@ -25,10 +29,13 @@ const drawShape = (context, shape) => {
             context.strokeStyle = selectedColor
             context.lineWidth = 10
             context.stroke()
+            context.strokeStyle = whiteColor
+            context.lineWidth = 5
+            context.stroke()
         }
         if (shape.isHovered) {
             context.strokeStyle = hoveredColor
-            context.lineWidth = 5
+            context.lineWidth = 10
             context.stroke()
         }
     }
