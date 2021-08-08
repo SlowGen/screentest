@@ -112,16 +112,30 @@ export const moveShapes = (mousePosition, shapeCenter, hitIndex) => (dispatch, g
     const mouseY = mousePosition[1]
     const delta = [mouseX - shapeCenter[0], mouseY - shapeCenter[1]]
     let shape = shapes[hitIndex] || shapeCache
-    
+    let movingShapeType = shape.type
     if (shapes[hitIndex]) shapeCache = shapes[hitIndex] 
     
     const locationChange = (shape) => {
-        if (shape.type === 'rectangle') {
-            shape.x = shape.x + (delta[0] / 2)
-            shape.y = shape.y + (delta[1] / 2)
-        } else {
-            shape.x = shape.x + delta[0]
-            shape.y = shape.y + delta[1]
+        switch ([shape, movingShapeType]) {
+            case ['rectangle', 'rectangle']:
+                shape.x = shape.x + (delta[0] / 2)
+                shape.y = shape.y + (delta[1] / 2)
+                break;
+            case ['circle', 'circle']:
+                shape.x = shape.x + delta[0]
+                shape.y = shape.y + delta[1]
+                break;
+            case ['rectangle', 'circle']:
+                shape.x = shape.x + (delta[0] * 2)
+                shape.y = shape.y + (delta[1] * 2)
+                break;
+            case ['circle', 'rectangle']:
+                shape.x = shape.x + (delta[0] / 2)
+                shape.y = shape.y + (delta[1] / 2)
+                break;
+            default:
+                shape.x = shape.x + delta[0]
+                shape.y = shape.y + delta[1]
         }
     }
     if (!selected.length) {
