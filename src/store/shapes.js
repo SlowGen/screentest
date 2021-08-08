@@ -70,7 +70,6 @@ export const editShape = (shape, property, newValue) => dispatch => {
 export const deleteShape = (deletedShape) => (dispatch, getState) => {
     const {shapes} = getState();
     const newShapes = shapes.filter(shape => shape !== deletedShape)
-    console.log('newshapes', newShapes)
     dispatch(removeShape(newShapes));
 }
 

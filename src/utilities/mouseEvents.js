@@ -23,8 +23,6 @@ export const onMouseDown = (e, shapes, dispatch) => {
             dispatch(selectManyShapes(hitIndex))
         } else {
             const currentPosition = [parseInt(e.clientX - onCanvas.x), parseInt(e.clientY - onCanvas.y)]
-            console.log('position', position)
-            console.log('currentPosition', currentPosition)
             if (position[0] === currentPosition[0] && position[1] === currentPosition[1]) {
                 dispatch(selectNoShapes())
                 dispatch(selectOneShape(hitIndex))

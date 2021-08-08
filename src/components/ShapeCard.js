@@ -12,8 +12,6 @@ const ShapeCard = (props) => {
     const [radius, setRadius] = useState(Math.round(shape.radius));
     const [color, setColor] = useState(shape.color);
 
-    console.log('width', width)
-
     const handleClick = () => {
         dispatch(deleteShape(shape));
     }
