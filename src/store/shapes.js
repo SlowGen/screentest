@@ -26,14 +26,14 @@ export const createShape = shapeType => (dispatch, getState) => {
     const { shapes } = getState()
     if (shapeType === 'rectangle') {
         const newRect = rectangle()
-        newRect.x += shapes.length * 30
-        newRect.y += shapes.length * 30
+        newRect.x += (shapes.length % 10) * (shapes.length % 10 * 10)
+        newRect.y += (shapes.length % 10) * (shapes.length % 5 * 10)
         shapes.push(newRect)
         dispatch(addShape(shapes))
     } else if (shapeType === 'circle') {
         const newCircle = circle()
-        newCircle.x += shapes.length * 30
-        newCircle.y += shapes.length * 30
+        newCircle.x += (shapes.length % 10) * (shapes.length % 10 * 10)
+        newCircle.y += (shapes.length % 10) * (shapes.length % 5 * 10)
         shapes.push(newCircle)
         dispatch(addShape(shapes))
     }
