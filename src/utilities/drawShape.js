@@ -1,6 +1,6 @@
 const drawShape = (context, shape) => {
     const selectedColor = 'rgba(238, 228, 50, 0.88)'
-    const hoveredColor = 'rgba(160, 150, 182, 0.45)'
+    const hoveredColor = 'rgba(0, 0, 250, 0.45)'
     const whiteColor = 'rgba(250, 250, 250, 1)'
     if (shape.type === 'rectangle') {
         context.fillStyle = shape.color
