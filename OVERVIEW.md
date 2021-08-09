@@ -1,7 +1,7 @@
 # Submission Overview # 
 ## by: Kali Linn - kali@kali.nyc ##
 
-### [Deployed App](https://screentest-d8a5d.web.app/)  || [GitHub Repo](https://github.com/SlowGen/screentest) ###
+### 🚀 [Deployed App](https://screentest-d8a5d.web.app/) 🚀  || 🖥️ [GitHub Repo](https://github.com/SlowGen/screentest) 💻 ###
 
 I chose to use React with Redux to build this app. I have had previous experience with both and because I had a degree of lesser experience with drawing on the canvas, I felt it best to focus my learning engergies there. Initially, I grappled with the idea of using inheritence to manage state, but quickly realized that given the complexity and nesting of the created shapes, it would be near impossible to ensure a seemless and reactive app. Using Redux also gave quite a bit more flexibility with adding features as I progressed. The extra work in set-up paid off immensely in the end.
 
