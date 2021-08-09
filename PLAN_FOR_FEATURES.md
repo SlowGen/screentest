@@ -1,4 +1,4 @@
-# Submission Plan for additional features # 
+# Submission Plan for Additional Features # 
 # by: Kali Linn - kali@kali.nyc #
 
 ### [Deployed App](https://screentest-d8a5d.web.app/)  || [GitHub Repo](https://github.com/SlowGen/screentest) ###

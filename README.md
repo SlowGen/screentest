@@ -1,6 +1,8 @@
 # 🔴 🟦 Shapes Coding Challenge 🟨 🟢 #
 🌟 Built by SlowGen 🌟
 
+[Submission Overview](https://github.com/SlowGen/screentest/blob/main/OVERVIEW.md) || [Submission Plan for Additional Features](https://github.com/SlowGen/screentest/blob/main/PLAN_FOR_FEATURES.md)
+
 ##  Description ##
 
 The goal of this challenge is to create an app that allows users to draw basic shapes on a canvas, select and deselect each shape or group of shapes, and then edit them in real time in the provided editor. Users can edit the size and color of each shape, as well as drag them around the canvas.
