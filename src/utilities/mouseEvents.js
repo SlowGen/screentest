@@ -17,7 +17,6 @@ export const onClick = (e, shapes, dispatch) => {
         } else if (shiftKey) {
             dispatch(selectManyShapes(hitIndex))
         } else if (!didMove) {
-            dispatch(selectNoShapes())
             dispatch(selectOneShape(hitIndex))
         }
     }
