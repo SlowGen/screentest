@@ -105,15 +105,15 @@ export const toggleHoverOff = () => (dispatch, getState) => {
     dispatch(showHover(shapes))
 }
 
-export const moveShapes = (mousePosition, shapeCenter, hitIndex) => (dispatch, getState) => {
+export const moveShapes = (mousePosition, shapeCenter, activeSelection) => (dispatch, getState) => {
     const {shapes} = getState()
     const selected = shapes.filter(shape => shape.isSelected)
     const mouseX = mousePosition[0]
     const mouseY = mousePosition[1]
     const delta = [mouseX - shapeCenter[0], mouseY - shapeCenter[1]]
-    let shape = shapes[hitIndex] || shapeCache
+    let shape = activeSelection || shapeCache
     let movingShapeType = shape.type
-    if (shapes[hitIndex]) shapeCache = shapes[hitIndex] 
+    if (activeSelection) shapeCache = activeSelection 
     
     const locationChange = (shape) => {
         switch ([shape, movingShapeType]) {
