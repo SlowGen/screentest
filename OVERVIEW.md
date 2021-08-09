@@ -1,0 +1,14 @@
+# Submission Overview # 
+## by: Kali Linn - kali@kali.nyc ##
+
+### [Deployed App](https://screentest-d8a5d.web.app/)  || [GitHub Repo](https://github.com/SlowGen/screentest) ###
+
+I chose to use React with Redux to build this app. I have had previous experience with both and because I had a degree of lesser experience with drawing on the canvas, I felt it best to focus my learning engergies there. Initially, I grappled with the idea of using inheritence to manage state, but quickly realized that given the complexity and nesting of the created shapes, it would be near impossible to ensure a seemless and reactive app. Using Redux also gave quite a bit more flexibility with adding features as I progressed. The extra work in set-up paid off immensely in the end.
+
+I think the most interesting lesson to pass on from this experience was learning the intricacies of the mouse click events. Because canvas is limited to certain events, using other built-in listeners was not possible (such as drag) and I had to build out my own sequence using what was available. Learning the difference between 'onClick', and 'onMouseDown'/'onMouseUp' was critical and beneficial. In this process, I noticed that very quick mouse movements can cause the triggers to misfire unexpectedly. I was able to accomplish this being unnoticeable to the user with single shapes, but with multiple shapes, rapid movement misfires were easy to reproduce and unavoidable. Without the help of a more in-depth library, I had to ultimately accept this edge case as outside of the scope of the project.
+
+In addition to tweaking the sequences after the event triggers, I also implemented a mini "cache" system to prevent errors being thrown when a shape got temporarily lost in a misfire. This not only kept the app from crashing, but also increased performance slightly by eliminating the need to recalculate every single hit test every time.
+
+Because this app was built with Redux, I think adding new features would be a relatively easy task. Mentally mapping out the suggested features (local Storage, undo/redo and save Image) would require very few additional lines of code.
+
+Some potential performance bottlenecks would be due to having a very high volume of shapes being re-rendered on every update. This could be potentially mitigated by either using a batch system for re-draws and/or taking advantage of local storage to cache older parts of the image that have been "saved". Additionally, having too many images on the canvas makes it difficult to access under-layers. Potentially the an additional control panel with all images (not just selected) could be implemented for quicker access to these under-layers.
