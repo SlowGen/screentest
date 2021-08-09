@@ -14,7 +14,7 @@ const AddCircleButton = () => {
   return (
     <div className="add-circle-button">
       <button className="circle-button" onClick={() => addCircle()}>
-        Add Cicle
+        Add Circle
       </button>
     </div>
   );
